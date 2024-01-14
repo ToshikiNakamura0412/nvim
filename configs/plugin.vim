@@ -1,3 +1,9 @@
+" get osname
+let osnameline = system('grep PRETTY /etc/os-release')
+let osnameinfos = split(osnameline, " ")
+let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
+
+
 " Automatic vim-plug installation
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -30,7 +36,12 @@ Plug 'Yggdroot/indentLine'
 Plug 'echasnovski/mini.indentscope'
 Plug 'machakann/vim-highlightedyank'
 " coding
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if osname == "Ubuntu" || osname == "Debian"
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+else
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'deoplete-plugins/deoplete-jedi'
+endif
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kylechui/nvim-surround'
@@ -39,7 +50,6 @@ Plug 'sentriz/vim-print-debug'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'skanehira/translate.vim'
 " git
-Plug 'NeogitOrg/neogit'
 Plug 'sindrets/diffview.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 " icon
@@ -47,8 +57,10 @@ Plug 'nvim-tree/nvim-web-devicons'
 " terminal
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
-let g:coc_global_extensions = [
-    \'coc-lists',
-    \'coc-snippets',
-    \'coc-jedi',
-    \]
+if osname == "Ubuntu" || osname == "Debian"
+  let g:coc_global_extensions = [
+      \'coc-lists',
+      \'coc-snippets',
+      \'coc-jedi',
+      \]
+endif
