@@ -17,6 +17,5 @@ ln -sfv $SCRIPT_DIR/../clang-format ~/.clang-format
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim -c 'PlugInstall --sync' -c qa
-vim -c 'CocUpdate' -c qa
 echo ">>> Done"
 echo ""
