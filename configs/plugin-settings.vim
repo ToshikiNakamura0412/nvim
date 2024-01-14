@@ -1,3 +1,9 @@
+" get osname
+let osnameline = system('grep PRETTY /etc/os-release')
+let osnameinfos = split(osnameline, " ")
+let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
+
+
 colorscheme molokai
 
 " === vim-polyglot ===
@@ -20,6 +26,12 @@ let g:print_debug_templates = {
 highlight GitGutterDelete guifg=#EB0A13 ctermfg=1
 highlight GitGutterAdd    guifg=#AEC90B ctermfg=2
 highlight GitGutterChange guifg=#FB8505 ctermfg=3
+
+if osname != "Ubuntu" && osname != "Debian"
+  " === deoplete ===
+  let g:deoplete#enable_at_startup = 1
+endif
+
 
 lua << END
 -- === lualine ===
@@ -53,9 +65,6 @@ require'mini.indentscope'.setup { symbol = '▏' }
 
 --- === nvim-surround ===
 require'nvim-surround'.setup {  }
-
--- === neogit ===
-require'neogit'.setup {  }
 
 -- === diffview ===
 require'diffview'.setup { }
