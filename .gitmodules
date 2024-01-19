@@ -1,0 +1,6 @@
+[submodule "configs/vim"]
+	path = configs/vim
+	url = https://github.com/ToshikiNakamura0412/vim.git
+[submodule "configs/basic"]
+	path = configs/basic
+	url = https://github.com/ToshikiNakamura0412/vim.git
