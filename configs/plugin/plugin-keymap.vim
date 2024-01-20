@@ -43,13 +43,4 @@ if osname == "Ubuntu" || osname == "Debian"
   nnoremap <silent>fmt <Plug>(coc-format)
   nnoremap <silent>mne <Plug>(coc-diagnostic-next-error)
   nnoremap <silent>mpe <Plug>(coc-diagnostic-prev-error)
-else
-  " === deoplete ===
-  " No line break on Enter in completion candidate display
-  inoremap <expr><CR>    pumvisible() ? "\<C-y>" : "<CR>"
-  " Select a candidate for completion by Tab/Shift-Tab (Up/Down)
-  inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "<Tab>"
-  inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "<S-Tab>"
-  inoremap <expr><Down>  pumvisible() ? "\<C-n>" : "<Down>"
-  inoremap <expr><Up>    pumvisible() ? "\<C-p>" : "<Up>"
 endif
