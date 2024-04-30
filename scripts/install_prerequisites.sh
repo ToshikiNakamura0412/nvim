@@ -38,4 +38,4 @@ elif [ $OS_NAME = "alpine" ]; then
 
 fi
 
-sudo ln -sf /usr/bin/nvim /usr/bin/vim
+# sudo ln -sf /usr/bin/nvim /usr/bin/vim
