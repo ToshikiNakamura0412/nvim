@@ -15,6 +15,11 @@ let g:cpp_class_scope_highlight = 1
 
 " === rainbow ===
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+\   'separately': {
+\       'cmake': 0,
+\   }
+\}
 
 " === vim-print-debug ===
 let g:print_debug_templates = {
