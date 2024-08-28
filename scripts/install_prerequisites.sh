@@ -23,9 +23,18 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
         https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf
 
     # Neovim
-    sudo wget -vO /opt/nvim.appimage https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    sudo chmod +x /opt/nvim.appimage
-    sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
+    if [ $(arch) = "x86_64" ]; then
+        sudo wget -vO /opt/nvim.appimage https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        sudo chmod +x /opt/nvim.appimage
+        sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
+    elif [ $(arch) = "aarch64" ]; then
+        git clone https://github.com/neovim/neovim.git
+        cd neovim
+        git checkout stable
+        make CMAKE_BUILD_TYPE=RelWithDebInfo
+        sudo make install
+        rm -rf neovim
+    fi
 
 elif [ $OS_NAME = "alpine" ]; then
     sudo apk update && sudo apk add \
@@ -35,7 +44,4 @@ elif [ $OS_NAME = "alpine" ]; then
         py3-pip \
         neovim
     pip3 install pynvim
-
 fi
-
-# sudo ln -sf /usr/bin/nvim /usr/bin/vim
