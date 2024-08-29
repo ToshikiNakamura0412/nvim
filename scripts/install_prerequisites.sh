@@ -28,6 +28,13 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
         sudo chmod +x /opt/nvim.appimage
         sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
     elif [ $(arch) = "aarch64" ]; then
+        sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+            ninja-build \
+            gettext \
+            cmake \
+            unzip \
+            build-essential \
+            ca-certificates
         git clone https://github.com/neovim/neovim.git
         cd neovim
         git checkout stable
