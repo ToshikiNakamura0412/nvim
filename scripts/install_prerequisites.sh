@@ -28,19 +28,26 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
         sudo chmod +x /opt/nvim.appimage
         sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
     elif [ $(arch) = "aarch64" ]; then
-        sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-            ninja-build \
-            gettext \
-            cmake \
-            unzip \
-            build-essential \
-            ca-certificates
-        git clone https://github.com/neovim/neovim.git
-        cd neovim
-        git checkout stable
-        make CMAKE_BUILD_TYPE=RelWithDebInfo
-        sudo make install
-        rm -rf neovim
+        # Choose between appimage or build
+        APP_TYPE="appimage"
+        if [ $APP_TYPE = "appimage" ]; then
+            sudo wget -vO /opt/nvim.appimage https://github.com/matsuu/neovim-aarch64-appimage/releases/download/v0.10.1/nvim-v0.10.1-aarch64.appimage
+            sudo chmod +x /opt/nvim.appimage
+            sudo ln -sf /opt/nvim.appimage /usr/local/bin/nvim
+        elif [ $APP_TYPE = "build" ]; then
+            sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+                unzip \
+                gettext \
+                cmake \
+                ninja-build \
+                build-essential \
+                ca-certificates
+            git clone -b stable --single-branch --depth 1 https://github.com/neovim/neovim ~/neovim
+            cd ~/neovim
+            make appimage
+            sudo make install
+            rm -rf ~/neovim
+        fi
     fi
 
 elif [ $OS_NAME = "alpine" ]; then
