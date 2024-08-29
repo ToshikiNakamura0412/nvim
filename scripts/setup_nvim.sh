@@ -3,6 +3,15 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 echo ""
 echo "setting Neovim... "
+if [ -d ~/.local/share/nvim/plugged ]; then
+  ¦ rm -rf ~/.local/share/nvim/plugged
+fi
+if [ -d ~/.config/nvim/undo ]; then
+  ¦ rm -rf ~/.config/nvim/undo
+fi
+if [ -d ~/.config/coc ]; then
+  ¦ rm -rf ~/.config/coc
+fi
 if [ ! -d ~/.config/nvim ]; then
     mkdir -pv ~/.config/nvim
 fi
