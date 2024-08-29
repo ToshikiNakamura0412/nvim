@@ -35,12 +35,12 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
             unzip \
             build-essential \
             ca-certificates
-        git clone https://github.com/neovim/neovim.git
-        cd neovim
+        git clone https://github.com/neovim/neovim.git ~/neovim
+        cd ~/neovim
         git checkout stable
         make CMAKE_BUILD_TYPE=RelWithDebInfo
         sudo make install
-        rm -rf neovim
+        rm -rf ~/neovim
     fi
 
 elif [ $OS_NAME = "alpine" ]; then
