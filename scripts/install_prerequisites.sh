@@ -29,7 +29,7 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
         sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
     elif [ $(arch) = "aarch64" ]; then
         # Choose between appimage or build
-        APP_TYPE="build"
+        APP_TYPE="appimage"
         if [ $APP_TYPE = "appimage" ]; then
             sudo wget -vO /opt/nvim.appimage https://github.com/matsuu/neovim-aarch64-appimage/releases/download/v0.10.1/nvim-v0.10.1-aarch64.appimage
             sudo chmod +x /opt/nvim.appimage
