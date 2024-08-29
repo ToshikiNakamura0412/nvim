@@ -17,8 +17,10 @@ git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 ```
 
 ### macOS
+#### Prerequisites
+- pip3
+
 ```bash
 git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
-./nvim/scripts/install_nvim_macos_arm64.sh
-./nvim/scripts/setup_nvim.sh
+./nvim/install_macos_arm64.sh
 ```
