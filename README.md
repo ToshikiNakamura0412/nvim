@@ -22,5 +22,5 @@ git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 
 ```bash
 git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
-./nvim/install_macos_arm64.sh
+./nvim/install.sh mac
 ```
