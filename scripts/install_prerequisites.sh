@@ -66,6 +66,10 @@ elif [ $OS_NAME = "alpine" ]; then
 elif [ $OS_NAME = "mac" ]; then
     # Prerequisites
     pip3 install pynvim jedi
+    if [ ! -d /Library/Fonts ]; then
+        sudo mkdir -pv /Library/Fonts
+    fi
+    cd /Library/Fonts && sudo curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf
 
     # Neovim
     curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
