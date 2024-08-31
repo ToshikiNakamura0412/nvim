@@ -7,20 +7,10 @@
   - x86_64
   - arm64
 - macOS
-  - arm64
+  - arm64 (Prerequisites: pip3)
 
 ## Installation
-### Ubuntu
 ```bash
 git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 ./nvim/install.sh
-```
-
-### macOS
-#### Prerequisites
-- pip3
-
-```bash
-git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
-./nvim/install.sh mac
 ```
