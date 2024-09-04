@@ -4,8 +4,14 @@ let osnameinfos = split(osnameline, " ")
 let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
 
 
-" === nvim-tree ===
-nnoremap <silent><C-e> <Cmd>NvimTreeToggle<CR>
+" filer
+if has('nvim-0.9')
+  " === nvim-tree ===
+  nnoremap <silent><C-e> <Cmd>NvimTreeToggle<CR>
+else
+" === nerdtree ===
+  nnoremap <silent><C-e> :NERDTreeToggle<CR>
+endif
 
 " === telescope ===
 nnoremap <silent>ff <Cmd>Telescope find_files<CR>

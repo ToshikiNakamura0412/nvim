@@ -24,7 +24,11 @@ Plug 'nvim-lualine/lualine.nvim'
 " bufferline
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 " filer
-Plug 'nvim-tree/nvim-tree.lua'
+if has('nvim-0.9')
+  Plug 'nvim-tree/nvim-tree.lua'
+else
+  Plug 'preservim/nerdtree'
+endif
 " fuzzy finder
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 Plug 'nvim-lua/plenary.nvim'
@@ -39,8 +43,10 @@ Plug 'machakann/vim-highlightedyank'
 if osname == "Ubuntu" || osname == "Debian"
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'deoplete-plugins/deoplete-jedi'
+  if has('python3')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'deoplete-plugins/deoplete-jedi'
+  endif
 endif
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
