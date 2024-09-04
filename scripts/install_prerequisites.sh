@@ -68,7 +68,7 @@ elif [ $OS_NAME = "alpine" ]; then
     pip3 install pynvim jedi
 
 elif [ $OS_NAME = "fedora" ]; then
-    sudo dnf check-update && sudo dnf install -y \
+    sudo dnf check-update || true && sudo dnf install -y \
         curl \
         xsel \
         python3 \
