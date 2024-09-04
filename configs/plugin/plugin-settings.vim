@@ -59,9 +59,6 @@ require'bufferline'.setup {
   }
 }
 
---- === nvim-tree ===
-require'nvim-tree'.setup {  }
-
 -- === telescope ===
 require'telescope'.setup {  }
 
@@ -74,9 +71,15 @@ require'nvim-surround'.setup {  }
 -- === diffview ===
 require'diffview'.setup { }
 
--- === gitsigns ===
-require'gitsigns'.setup {  }
-
 -- === toggleterm ===
 require'toggleterm'.setup {  }
+
+if vim.fn.has('nvim-0.9') == 1 then
+  --- === nvim-tree ===
+  require'nvim-tree'.setup {  }
+
+  -- === gitsigns ===
+  require'gitsigns'.setup {  }
+end
+
 END

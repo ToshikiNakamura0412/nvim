@@ -24,7 +24,11 @@ Plug 'nvim-lualine/lualine.nvim'
 " bufferline
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 " filer
-Plug 'nvim-tree/nvim-tree.lua'
+if has('nvim-0.9')
+  Plug 'nvim-tree/nvim-tree.lua'
+else
+  Plug 'preservim/nerdtree'
+endif
 " fuzzy finder
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 Plug 'nvim-lua/plenary.nvim'
