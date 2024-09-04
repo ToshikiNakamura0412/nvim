@@ -39,8 +39,10 @@ Plug 'machakann/vim-highlightedyank'
 if osname == "Ubuntu" || osname == "Debian"
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'deoplete-plugins/deoplete-jedi'
+  if has('python3')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'deoplete-plugins/deoplete-jedi'
+  endif
 endif
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
