@@ -59,7 +59,7 @@ if [ $OS_NAME = "ubuntu" ] || [ $OS_NAME = "debian" ]; then
     fi
 
 elif [ $OS_NAME = "alpine" ]; then
-    sudo apk update && sudo apk add \
+    sudo apk update && sudo apk add --no-cache \
         curl \
         xsel \
         python3 \
@@ -68,7 +68,7 @@ elif [ $OS_NAME = "alpine" ]; then
     pip3 install pynvim jedi
 
 elif [ $OS_NAME = "fedora" ]; then
-    sudo dnf check-update || true && sudo dnf install -y \
+    sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False \
         curl \
         xsel \
         python3 \
