@@ -1,12 +1,12 @@
 #!/bin/bash
 
-MINI_PKGS_BASE=(
+MINI_PACK_BASE=(
     curl
     xsel
     python3
     neovim
 )
-MINI_PKGS_PIP=(
+MINI_PACK_PIP=(
     pynvim
     jedi
 )
@@ -69,20 +69,20 @@ if [[ ${DISTRO} == "ubuntu" ]] || [[ ${DISTRO} == "debian" ]]; then
     fi
 
 elif [[ ${DISTRO} == "alpine" ]]; then
-    sudo apk update && sudo apk add --no-cache ${MINI_PKGS_BASE[@]} py3-pip
-    pip3 install ${MINI_PKGS_PIP[@]}
+    sudo apk update && sudo apk add --no-cache ${MINI_PACK_BASE[@]} py3-pip
+    pip3 install ${MINI_PACK_PIP[@]}
 
 elif [[ ${DISTRO} == "fedora" ]]; then
-    sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False ${MINI_PKGS_BASE[@]} python3-pip
-    pip3 install ${MINI_PKGS_PIP[@]}
+    sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False ${MINI_PACK_BASE[@]} python3-pip
+    pip3 install ${MINI_PACK_PIP[@]}
 
 elif [[ ${DISTRO} == "opensuse-leap" ]]; then
-    sudo zypper refresh && sudo zypper install -y --no-recommends ${MINI_PKGS_BASE[@]} python3-pip
-    pip3 install ${MINI_PKGS_PIP[@]}
+    sudo zypper refresh && sudo zypper install -y --no-recommends ${MINI_PACK_BASE[@]} python3-pip
+    pip3 install ${MINI_PACK_PIP[@]}
 
 elif [[ ${DISTRO} == "mac" ]]; then
     # Prerequisites
-    pip3 install ${MINI_PKGS_PIP[@]}
+    pip3 install ${MINI_PACK_PIP[@]}
     if [[ ! -d /Library/Fonts ]]; then
         sudo mkdir -pv /Library/Fonts
     fi
