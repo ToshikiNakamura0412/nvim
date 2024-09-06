@@ -72,6 +72,10 @@ elif [[ ${DISTRO} == "alpine" ]]; then
     sudo apk update && sudo apk add --no-cache ${MINI_PACK_BASE[@]} py3-pip
     pip3 install ${MINI_PACK_PIP[@]}
 
+elif [[ ${DISTRO} == "arch" ]]; then
+    sudo pacman -Sy --noconfirm ${MINI_PACK_BASE[@]} python-pip
+    pip install ${MINI_PACK_PIP[@]}
+
 elif [[ ${DISTRO} == "fedora" ]]; then
     sudo dnf check-update || true && sudo dnf install -y --setopt=install_weak_deps=False ${MINI_PACK_BASE[@]} python3-pip
     pip3 install ${MINI_PACK_PIP[@]}
