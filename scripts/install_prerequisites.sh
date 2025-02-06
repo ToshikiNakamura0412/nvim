@@ -42,7 +42,7 @@ if [[ ${DISTRO} == "ubuntu" ]] || [[ ${DISTRO} == "debian" ]]; then
 
     # Neovim
     if [[ $(arch) == "x86_64" ]]; then
-        sudo wget -vO /opt/nvim.appimage https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        sudo wget -vO /opt/nvim.appimage https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
         sudo chmod +x /opt/nvim.appimage
         sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
     elif [[ $(arch) == "aarch64" ]]; then
