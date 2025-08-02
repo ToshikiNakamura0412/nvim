@@ -42,6 +42,7 @@ Plug 'machakann/vim-highlightedyank'
 " coding
 if osname == "Ubuntu" || osname == "Debian"
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'github/copilot.vim'
 else
   if has('python3')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
