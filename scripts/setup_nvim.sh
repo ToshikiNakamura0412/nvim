@@ -27,6 +27,8 @@ nvim_setup() {
   ln -sfv ${script_dir}/../configs/plugin/plugin.vim ~/.config/nvim/plugin.vim
   ln -sfv ${script_dir}/../configs/others/coc-settings.json ~/.config/nvim/coc-settings.json
   ln -sfv ${script_dir}/../configs/others/clang-format ~/.clang-format
+  curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   echo "[INFO] >>> Done"
   echo ""
 }
