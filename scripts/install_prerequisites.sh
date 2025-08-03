@@ -27,7 +27,7 @@ nvim_install_prerequisites() {
   local os_name=$(nvim_get_os_name)
 
   echo ""
-  echo "[INFO] install prerequisites for Neovim..."
+  echo "[INFO] Installing prerequisites for Neovim..."
   if [[ "${os_name}" == "ubuntu" ]] || [[ "${os_name}" == "debian" ]]; then
     # Prerequisites
     sudo apt-get update && sudo apt-get install -y --no-install-recommends \
