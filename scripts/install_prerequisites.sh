@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NVIM_INSTALL_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 NVIM_INSTALL_MINI_PACK_BASE=(
   curl
   xsel
@@ -25,6 +27,7 @@ nvim_get_os_name() {
 
 nvim_install_prerequisites() {
   local os_name=$(nvim_get_os_name)
+  local script_dir=${NVIM_INSTALL_SCRIPT_DIR}
 
   echo ""
   echo "[INFO] Installing prerequisites for Neovim..."
@@ -48,32 +51,7 @@ nvim_install_prerequisites() {
       https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf
 
     # Neovim
-    if [[ "$(arch)" == "x86_64" ]]; then
-      sudo wget -vO /opt/nvim.appimage https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
-      sudo chmod +x /opt/nvim.appimage
-      sudo ln -sf /opt/nvim.appimage /usr/bin/nvim
-    elif [[ "$(arch)" == "aarch64" ]]; then
-      # Choose between appimage or build
-      APP_TYPE="appimage"
-      if [[ "${APP_TYPE}" == "appimage" ]]; then
-        sudo wget -vO /opt/nvim.appimage https://github.com/matsuu/neovim-aarch64-appimage/releases/download/v0.10.1/nvim-v0.10.1-aarch64.appimage
-        sudo chmod +x /opt/nvim.appimage
-        sudo ln -sf /opt/nvim.appimage /usr/local/bin/nvim
-      elif [[ "${APP_TYPE}" == "build" ]]; then
-        sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-          unzip \
-          gettext \
-          cmake \
-          ninja-build \
-          build-essential \
-          ca-certificates
-        git clone -b stable --single-branch --depth 1 https://github.com/neovim/neovim ~/neovim
-        cd ~/neovim
-        make appimage
-        sudo make install
-        rm -rf ~/neovim
-      fi
-    fi
+    "${script_dir}/install_nvim_linux_app.sh"
 
   elif [[ "${os_name}" == "alpine" ]]; then
     sudo apk update && sudo apk add --no-cache "${NVIM_INSTALL_MINI_PACK_BASE[@]}" py3-pip
