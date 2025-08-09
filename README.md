@@ -22,14 +22,10 @@
 git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 ./nvim/install.sh
 ```
-- If you want to install nvim app only, please execute the following command:
-  ```bash
-  ./nvim/install.sh --app-only
-  ```
-  - If your environment does not have `FUSE`, please execute the following command additionally:
-    ```bash
-    ./nvim/install.sh --no-fuse-nvim-app
-    ```
+### Options
+- `--setup-only` : If you want to run only the setup script without installing the prerequisites, use this option.
+- `--app-only` : If you want to install the nvim app only, use this option.
+  - `--no-fuse-nvim-app` : If your environment does not have `FUSE`, execute additional installation with this option.
 
 ## Setup
 ### plugin
