@@ -19,6 +19,7 @@ nvim_install_linux_app_add_to_path() {
     "$HOME/.bashrc"
     "$HOME/.zshrc"
   )
+
   for target_file in "${target_files[@]}"; do
     if [[ -e "${target_file}" ]]; then
       if ! grep -q "${target_string}" ${target_file}; then
@@ -27,7 +28,8 @@ nvim_install_linux_app_add_to_path() {
       fi
     fi
   done
-  echo "${target_string}"
+
+  PATH=$HOME/.local/bin:$PATH
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
