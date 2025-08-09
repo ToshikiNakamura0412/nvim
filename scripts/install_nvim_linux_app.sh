@@ -25,7 +25,7 @@ nvim_install_linux_app_add_to_path() {
     for target_file in "${target_files[@]}"; do
       if [[ -e "${target_file}" ]]; then
         if ! grep -q "${target_string}" ${target_file}; then
-          echo "Adding \"${target_string}\" to ${target_file}"
+          echo "[INFO] Adding \"${target_string}\" to ${target_file}"
           echo "${target_string}" >> "${target_file}"
         fi
       fi
