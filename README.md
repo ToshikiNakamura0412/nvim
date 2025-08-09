@@ -24,7 +24,9 @@ git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 ```
 ### Options
 - `--setup-only` : If you want to run only the setup script without installing the prerequisites, use this option.
+  - Prerequisites: curl
 - `--app-only` : If you want to install the nvim app only, use this option.
+  - Prerequisites: wget
   - `--no-fuse-nvim-app` : If your environment does not have `FUSE`, execute additional installation with this option.
 
 ## Setup
