@@ -16,6 +16,7 @@ nvim_install_show_help() {
   echo "[INFO] "
   echo "[INFO] Options:"
   echo "[INFO]   --help, -h            Show this help message."
+  echo "[INFO]   --setup-only          Only run the setup scripts without installing prerequisites."
   echo "[INFO]   --app-only            Install Neovim appimage only."
   echo "[INFO]   --no-fuse-nvim-app    Install Neovim appimage for non-FUSE environments."
 }
@@ -26,6 +27,9 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
     exit 0
   elif [[ "--help" == "$1" || "-h" == "$1" ]]; then
     nvim_install_show_help
+    exit 0
+  elif [[ "--setup-only" == "$1" ]]; then
+    "${NVIM_INSTALL_SCRIPT_DIR}/scripts/setup_nvim.sh"
     exit 0
   elif [[ "--app-only" == "$1" ]]; then
     "${NVIM_INSTALL_SCRIPT_DIR}/scripts/install_nvim_linux_app.sh"
