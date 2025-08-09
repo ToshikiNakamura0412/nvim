@@ -27,6 +27,7 @@ nvim_install_linux_app_add_to_path() {
       fi
     fi
   done
+  echo "${target_string}"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
