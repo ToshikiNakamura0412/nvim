@@ -39,7 +39,7 @@ nvim_install_linux_app_add_to_path() {
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   if [[ "${NIVM_ARCH}" == "x86_64" ]] || [[ "${NIVM_ARCH}" == "arm64" ]]; then
-    # nvim_install_linux_app
+    nvim_install_linux_app
     nvim_install_linux_app_add_to_path
   fi
 fi
