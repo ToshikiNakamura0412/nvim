@@ -33,6 +33,26 @@ nvim_setup() {
   echo ""
 }
 
+nvim_setup_add_to_path() {
+  if [[ -e "$HOME/.local/bin/nvim" ]]; then
+    local target_string="export PATH=\$HOME/.local/bin:\$PATH"
+    local target_files=(
+      "$HOME/.bashrc"
+      "$HOME/.zshrc"
+    )
+
+    for target_file in "${target_files[@]}"; do
+      if [[ -e "${target_file}" ]]; then
+        if ! grep -q "${target_string}" ${target_file}; then
+          echo "[INFO] Adding \"${target_string}\" to ${target_file}"
+          echo "${target_string}" >> "${target_file}"
+        fi
+      fi
+    done
+  fi
+}
+
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   nvim_setup
+  nvim_setup_add_to_path
 fi
