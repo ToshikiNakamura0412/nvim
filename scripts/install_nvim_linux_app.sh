@@ -30,7 +30,7 @@ nvim_install_linux_app() {
     if [[ "${NIVM_ARCH}" == "x86_64" ]]; then
       wget -vO "${app_dir}/nvim" "https://github.com/neovim/neovim-releases/releases/download/stable/nvim-linux-x86_64.appimage"
     elif [[ "${NIVM_ARCH}" == "arm64" ]]; then
-      # wget -vO "${app_dir}/nvim" "
+      wget -vO "${app_dir}/nvim" ""
     fi
   fi
   chmod +x "${app_dir}/nvim"
