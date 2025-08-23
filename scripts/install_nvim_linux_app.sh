@@ -12,9 +12,10 @@ is_supported_distro_for_latest_nvim() {
     source /etc/os-release
     if [[ "${ID}" == "ubuntu" ]]; then
       local version_major=$(echo "${VERSION_ID}" | cut -d "." -f 1)
-      if [[ "${version_major}" -ge 22 ]]; then
+      if (( version_major >= 22 )); then
         return 0
       fi
+    fi
   fi
   return 1
 }
