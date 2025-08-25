@@ -40,6 +40,9 @@ if osname == "Ubuntu" || osname == "Debian"
   " endfunction
   " inoremap <silent><expr> <TAB>  coc#pum#visible() ? coc#pum#next(1): <SID>check_back_space() ? '<Tab>'  : coc#refresh()
   " inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : '<S-Tab>'
+  " Select a candidate for completion by Up/Down
+  inoremap <expr><Down> coc#pum#visible() ? coc#pum#next(1) : '<Down>'
+  inoremap <expr><Up>   coc#pum#visible() ? coc#pum#prev(1) : '<Up>'
   " Others
   nnoremap <silent>H : <C-u>call CocAction('doHover') <CR>
   nnoremap <silent>df  <Plug>(coc-definition)
