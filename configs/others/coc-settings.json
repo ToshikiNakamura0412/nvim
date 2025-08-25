@@ -9,7 +9,7 @@
     "jedi": {
         "enable": true,
         "startupMessage": false,
-        "executable.command": "~/.local/bin/jedi-language-server"
+        "executable.command": "jedi-language-server"
     },
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
