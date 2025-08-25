@@ -6,11 +6,33 @@ if [[ "$(arch)" == "aarch64" ]]; then
 fi
 NVIM_APP_DIR="$HOME/.local/bin"
 
+# Ubuntu 22+ are supported for latest nvim
+is_supported_distro_for_latest_nvim() {
+  if [[ -e "/etc/os-release" ]]; then
+    source /etc/os-release
+    if [[ "${ID}" == "ubuntu" ]]; then
+      local version_major=$(echo "${VERSION_ID}" | cut -d "." -f 1)
+      if (( version_major >= 22 )); then
+        return 0
+      fi
+    fi
+  fi
+  return 1
+}
+
 nvim_install_linux_app() {
   local app_dir="${NVIM_APP_DIR}"
 
   mkdir -pv "${app_dir}"
-  wget -vO "${app_dir}/nvim" "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-${NIVM_ARCH}.appimage"
+  if is_supported_distro_for_latest_nvim; then
+    wget -vO "${app_dir}/nvim" "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-${NIVM_ARCH}.appimage"
+  else
+    if [[ "${NIVM_ARCH}" == "x86_64" ]]; then
+      wget -vO "${app_dir}/nvim" "https://github.com/neovim/neovim-releases/releases/download/stable/nvim-linux-x86_64.appimage"
+    elif [[ "${NIVM_ARCH}" == "arm64" ]]; then
+      wget -vO "${app_dir}/nvim" "https://github.com/ToshikiNakamura0412/neovim-linux-arm64-appimage/releases/download/stable/nvim-linux-arm64.appimage"
+    fi
+  fi
   chmod +x "${app_dir}/nvim"
 }
 
