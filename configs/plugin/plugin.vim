@@ -68,6 +68,6 @@ if osname == "Ubuntu" || osname == "Debian"
   let g:coc_global_extensions = [
       \'coc-lists',
       \'coc-snippets',
-      \'coc-jedi',
+      \'coc-pyright',
       \]
 endif
