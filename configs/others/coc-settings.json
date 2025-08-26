@@ -6,11 +6,6 @@
             "filetypes": ["cpp", "c++", "c", "cc", "objc", "objcpp"]
         }
     },
-    "jedi": {
-        "enable": true,
-        "startupMessage": false,
-        "executable.command": "jedi-language-server"
-    },
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
     "diagnostic.warningSign": "",

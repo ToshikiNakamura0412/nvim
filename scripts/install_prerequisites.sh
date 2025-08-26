@@ -44,7 +44,7 @@ nvim_install_prerequisites() {
       nodejs \
       npm \
       ripgrep
-    pip3 install jedi-language-server pynvim
+    pip3 install pynvim
     sudo npm install -y -g n
     sudo n stable
     curl -fLo ~/.local/share/fonts/HackNerdFont-Regular.ttf --create-dirs \
