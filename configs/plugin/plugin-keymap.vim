@@ -10,10 +10,6 @@ endif
 " filer
 nnoremap <silent><C-e> <Cmd>NvimTreeToggle<CR>
 
-" === diffview ===
-nnoremap <silent>gd <Cmd>DiffviewOpen<CR>
-
-
 " completion (coc or deoplete)
 if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
   " === coc ===
