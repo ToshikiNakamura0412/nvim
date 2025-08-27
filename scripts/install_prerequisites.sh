@@ -71,7 +71,10 @@ nvim_install_prerequisites() {
 
   elif [[ "${os_name}" == "mac" ]]; then
     # Prerequisites
-    pip3 install "${NVIM_INSTALL_MINI_PACK_PIP[@]}"
+    brew install node
+    sudo npm install -y -g n
+    sudo n stable
+    pip3 install pynvim
     if [[ ! -d /Library/Fonts ]]; then
       sudo mkdir -pv /Library/Fonts
     fi
