@@ -31,10 +31,6 @@ git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 
 ## Setup
 ### plugin
-- Please set executable.command path for `jedi-language-server`
-  ```bash
-  nvim ~/.config/nvim/coc-settings.json
-  ```
 - If you want to enable Github Copilot, please execute the following in Neovim:
   ```
   :Copilot setup
