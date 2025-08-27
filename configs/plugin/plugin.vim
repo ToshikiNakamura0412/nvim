@@ -1,8 +1,11 @@
 " get osname
-let osnameline = system('grep PRETTY /etc/os-release')
-let osnameinfos = split(osnameline, " ")
-let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
-
+if has('linux')
+  let osnameline = system('grep PRETTY /etc/os-release')
+  let osnameinfos = split(osnameline, " ")
+  let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
+elseif has('mac')
+  let osname = "Mac"
+endif
 
 " Automatic vim-plug installation
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -40,7 +43,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'echasnovski/mini.indentscope'
 Plug 'machakann/vim-highlightedyank'
 " coding
-if osname == "Ubuntu" || osname == "Debian"
+if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'github/copilot.vim'
 else
@@ -64,7 +67,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 " terminal
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 call plug#end()
-if osname == "Ubuntu" || osname == "Debian"
+if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
   let g:coc_global_extensions = [
       \'coc-lists',
       \'coc-snippets',

@@ -1,7 +1,11 @@
 " get osname
-let osnameline = system('grep PRETTY /etc/os-release')
-let osnameinfos = split(osnameline, " ")
-let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
+if has('linux')
+  let osnameline = system('grep PRETTY /etc/os-release')
+  let osnameinfos = split(osnameline, " ")
+  let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
+elseif has('mac')
+  let osname = "Mac"
+endif
 
 
 colorscheme molokai
@@ -32,7 +36,7 @@ highlight GitGutterDelete guifg=#EB0A13 ctermfg=1
 highlight GitGutterAdd    guifg=#AEC90B ctermfg=2
 highlight GitGutterChange guifg=#FB8505 ctermfg=3
 
-if osname != "Ubuntu" && osname != "Debian"
+if index(['Mac', 'Ubuntu', 'Debian'], osname) == -1
   " === deoplete ===
   let g:deoplete#enable_at_startup = 1
 endif
