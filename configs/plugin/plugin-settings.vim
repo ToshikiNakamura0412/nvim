@@ -25,18 +25,12 @@ let g:rainbow_conf = {
 \   }
 \}
 
-" === vim-print-debug ===
-let g:print_debug_templates = {
-\   'python': 'print(f"+++ {}")',
-\   'cpp':    'std::cout << "+++ " << __LINE__ << " {}" << std::endl;',
-\ }
-
 " === gitgutter ===
 highlight GitGutterDelete guifg=#EB0A13 ctermfg=1
 highlight GitGutterAdd    guifg=#AEC90B ctermfg=2
 highlight GitGutterChange guifg=#FB8505 ctermfg=3
 
-if index(['Mac', 'Ubuntu', 'Debian'], osname) == -1
+if index(['Mac', 'Ubuntu', 'Debian'], osname) == -1 && has('python3')
   " === deoplete ===
   let g:deoplete#enable_at_startup = 1
 endif
@@ -63,27 +57,15 @@ require'bufferline'.setup {
   }
 }
 
--- === telescope ===
-require'telescope'.setup {  }
-
 -- === mini.indentscope ===
 require'mini.indentscope'.setup { symbol = '▏' }
 
---- === nvim-surround ===
+-- === nvim-surround ===
 require'nvim-surround'.setup {  }
 
--- === diffview ===
-require'diffview'.setup { }
+-- === nvim-tree ===
+require'nvim-tree'.setup {  }
 
--- === toggleterm ===
-require'toggleterm'.setup {  }
-
-if vim.fn.has('nvim-0.9') == 1 then
-  --- === nvim-tree ===
-  require'nvim-tree'.setup {  }
-
-  -- === gitsigns ===
-  require'gitsigns'.setup {  }
-end
-
+-- === gitsigns ===
+require'gitsigns'.setup {  }
 END

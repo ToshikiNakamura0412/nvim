@@ -20,31 +20,24 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " List of plugins
 call plug#begin('~/.local/share/nvim/plugged')
 " colorscheme
-Plug 'tomasr/molokai'
-Plug 'EdenEast/nightfox.nvim'
+Plug 'tomasr/molokai', { 'branch': 'master', 'depth': 1 }
+Plug 'EdenEast/nightfox.nvim', { 'branch': 'main', 'depth': 1 }
 " statusline
-Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-lualine/lualine.nvim', { 'branch': 'master', 'depth': 1 }
 " bufferline
-Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+Plug 'akinsho/bufferline.nvim', { 'branch': 'main', 'depth': 1 }
 " filer
-if has('nvim-0.9')
-  Plug 'nvim-tree/nvim-tree.lua'
-else
-  Plug 'preservim/nerdtree'
-endif
-" fuzzy finder
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-tree/nvim-tree.lua', { 'branch': 'master', 'depth': 1 }
 " highlight
-Plug 'sheerun/vim-polyglot'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'luochen1990/rainbow'
-Plug 'Yggdroot/indentLine'
-Plug 'echasnovski/mini.indentscope'
-Plug 'machakann/vim-highlightedyank'
+Plug 'sheerun/vim-polyglot', { 'branch': 'master', 'depth': 1 }
+Plug 'octol/vim-cpp-enhanced-highlight', { 'branch': 'master', 'depth': 1 }
+Plug 'luochen1990/rainbow', { 'branch': 'master', 'depth': 1 }
+Plug 'Yggdroot/indentLine', { 'branch': 'master', 'depth': 1 }
+Plug 'echasnovski/mini.indentscope', { 'branch': 'main', 'depth': 1 }
+Plug 'machakann/vim-highlightedyank', { 'branch': 'master', 'depth': 1 }
 " coding
-if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if index(["Mac", 'Ubuntu', 'Debian'], osname) != -1
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'depth': 1 }
   Plug 'github/copilot.vim'
 else
   if has('python3')
@@ -52,20 +45,17 @@ else
     Plug 'deoplete-plugins/deoplete-jedi'
   endif
 endif
-Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
-Plug 'kylechui/nvim-surround'
+Plug 'honza/vim-snippets', { 'branch': 'master', 'depth': 1 }
+Plug 'tpope/vim-commentary', { 'branch': 'master', 'depth': 1 }
+Plug 'jiangmiao/auto-pairs', { 'branch': 'master', 'depth': 1 }
+Plug 'kylechui/nvim-surround', { 'branch': 'main', 'depth': 1 }
 " debug
-Plug 'sentriz/vim-print-debug'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
-Plug 'skanehira/translate.vim'
+Plug 'skanehira/translate.vim', { 'branch': 'master', 'depth': 1 }
 " git
-Plug 'sindrets/diffview.nvim'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main', 'depth': 1 }
 " icon
-Plug 'nvim-tree/nvim-web-devicons'
-" terminal
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'nvim-tree/nvim-web-devicons', { 'branch': 'master', 'depth': 1 }
 call plug#end()
 if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
   let g:coc_global_extensions = [
