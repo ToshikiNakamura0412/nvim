@@ -1,8 +1,11 @@
 " get osname
-let osnameline = system('grep PRETTY /etc/os-release')
-let osnameinfos = split(osnameline, " ")
-let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
-
+if has('linux')
+  let osnameline = system('grep PRETTY /etc/os-release')
+  let osnameinfos = split(osnameline, " ")
+  let osname = substitute(osnameinfos[0],"PRETTY_NAME=\"","","g")
+elseif has('mac')
+  let osname = "Mac"
+endif
 
 " filer
 if has('nvim-0.9')
@@ -28,7 +31,7 @@ nnoremap <silent><C-t> <Cmd>ToggleTerm<CR>
 
 
 " completion (coc or deoplete)
-if osname == "Ubuntu" || osname == "Debian"
+if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
   " === coc ===
   " No line break on Enter in completion candidate display
   inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : '<CR>'
