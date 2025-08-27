@@ -8,26 +8,10 @@ elseif has('mac')
 endif
 
 " filer
-if has('nvim-0.9')
-  " === nvim-tree ===
-  nnoremap <silent><C-e> <Cmd>NvimTreeToggle<CR>
-else
-" === nerdtree ===
-  nnoremap <silent><C-e> :NERDTreeToggle<CR>
-endif
-
-" === telescope ===
-nnoremap <silent>ff <Cmd>Telescope find_files<CR>
-nnoremap <silent>fg <Cmd>Telescope live_grep<CR>
-
-" === vim-print-debug ===
-nnoremap <silent>dp <Cmd>call print_debug#print_debug()<CR>
+nnoremap <silent><C-e> <Cmd>NvimTreeToggle<CR>
 
 " === diffview ===
 nnoremap <silent>gd <Cmd>DiffviewOpen<CR>
-
-" === toggleterm ===
-nnoremap <silent><C-t> <Cmd>ToggleTerm<CR>
 
 
 " completion (coc or deoplete)
