@@ -44,7 +44,7 @@ nvim_install_prerequisites() {
       nodejs \
       npm \
       ripgrep
-    pip3 install pynvim
+    pip3 install pynvim pyright
     sudo npm install -y -g n
     sudo n stable
     curl -fLo ~/.local/share/fonts/HackNerdFont-Regular.ttf --create-dirs \
@@ -74,7 +74,7 @@ nvim_install_prerequisites() {
     brew install node
     sudo npm install -y -g n
     sudo n stable
-    pip3 install pynvim
+    pip3 install pynvim pyright
     if [[ ! -d /Library/Fonts ]]; then
       sudo mkdir -pv /Library/Fonts
     fi
