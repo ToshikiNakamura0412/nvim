@@ -23,6 +23,7 @@ git clone --recursive https://github.com/ToshikiNakamura0412/nvim.git
 ./nvim/install.sh
 ```
 ### Options
+- `--with-copilot` : Enable GitHub Copilot plugin in Neovim.
 - `--setup-only` : If you want to run only the setup script without installing the prerequisites, use this option.
   - Prerequisites: curl
 - `--app-only` : If you want to install the nvim app only, use this option.
