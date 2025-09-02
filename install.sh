@@ -28,6 +28,11 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   elif [[ "--help" == "$1" || "-h" == "$1" ]]; then
     nvim_install_show_help
     exit 0
+  elif [[ "--with-copilot" == "$1" ]]; then
+    nvim_install
+    sed -i 's/^"\s*\(Plug .*\)/\1/' ~/.config/nvim/plugin.vim
+    echo "[INFO] Copilot enabled. Please open Neovim and run \`:Copilot setup\` to complete the setup."
+    exit 0
   elif [[ "--setup-only" == "$1" ]]; then
     "${NVIM_INSTALL_SCRIPT_DIR}/scripts/setup_nvim.sh"
     exit 0
