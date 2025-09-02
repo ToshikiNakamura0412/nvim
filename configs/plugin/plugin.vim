@@ -38,7 +38,7 @@ Plug 'machakann/vim-highlightedyank', { 'branch': 'master', 'depth': 1 }
 " coding
 if index(["Mac", 'Ubuntu', 'Debian'], osname) != -1
   Plug 'neoclide/coc.nvim', {'branch': 'release', 'depth': 1 }
-  Plug 'github/copilot.vim', { 'branch': 'release', 'depth': 1 }
+  " Plug 'github/copilot.vim', { 'branch': 'release', 'depth': 1 }
 else
   if has('python3')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
