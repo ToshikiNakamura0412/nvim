@@ -1,6 +1,7 @@
 #!/bin/bash
 
 NVIM_INSTALL_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NVIM_PLUGIN_FILE=~/.config/nvim/plugin.vim
 
 nvim_install() {
   local script_dir="${NVIM_INSTALL_SCRIPT_DIR}"
@@ -16,6 +17,7 @@ nvim_install_show_help() {
   echo "[INFO] "
   echo "[INFO] Options:"
   echo "[INFO]   --help, -h            Show this help message."
+  echo "[INFO]   --with-copilot        Enable GitHub Copilot plugin in Neovim."
   echo "[INFO]   --setup-only          Only run the setup scripts without installing prerequisites."
   echo "[INFO]   --app-only            Install Neovim appimage only."
   echo "[INFO]   --no-fuse-nvim-app    Install Neovim appimage for non-FUSE environments."
@@ -30,7 +32,13 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
     exit 0
   elif [[ "--with-copilot" == "$1" ]]; then
     nvim_install
-    sed -i 's/^"\s*\(Plug .*\)/\1/' ~/.config/nvim/plugin.vim
+    if [ "$(uname)" = "Darwin" ]; then
+      cp -L "${NVIM_PLUGIN_FILE}" "${NVIM_PLUGIN_FILE}.tmp"
+      mv "${NVIM_PLUGIN_FILE}.tmp" "${NVIM_PLUGIN_FILE}"
+      sed -i '' -E "/'github\/copilot\.vim'/s/^[[:space:]]*\"[[:space:]]*(Plug.*)/  \1/" "${NVIM_PLUGIN_FILE}"
+    else
+      sed -i -E "/'github\/copilot\.vim'/s/^[[:space:]]*\"[[:space:]]*(Plug.*)/  \1/" "${NVIM_PLUGIN_FILE}"
+    fi
     echo "[INFO] Copilot enabled. Please open Neovim and run \`:Copilot setup\` to complete the setup."
     exit 0
   elif [[ "--setup-only" == "$1" ]]; then
