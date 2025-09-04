@@ -17,6 +17,10 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
+" Plug Pre-settings
+" disable markdown in vim-polyglot
+let g:polyglot_disabled = ['markdown']
+
 " List of plugins
 call plug#begin('~/.local/share/nvim/plugged')
 " colorscheme
