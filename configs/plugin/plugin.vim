@@ -66,6 +66,10 @@ if index(['Mac', 'Ubuntu', 'Debian'], osname) != -1
       \'coc-lists',
       \'coc-snippets',
       \'coc-pyright',
+      \'coc-html',
+      \'coc-css',
+      \'coc-json',
+      \'coc-eslint',
       \'coc-tsserver',
       \]
 endif
